@@ -26,7 +26,7 @@ public class ReportCommand extends Command implements TabExecutor {
    private Format format = new Format();
 
    public ReportCommand() {
-      super("fairyreport", "", new String[]{"wdr", "watchdogreport", "举报"});
+      super("fairyreport", "", new String[]{"report", "wdr", "watchdogreport", "举报"});
    }
 
    public void execute(CommandSender sender, String[] args) {

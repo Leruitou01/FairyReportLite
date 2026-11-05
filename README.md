@@ -33,7 +33,7 @@ FairyReport Lite 是运行在 BungeeCord / Waterfall 代理端的中文举报管
 | `/chatrecord <玩家> [页码]` | `report.chatrecord` | 查询原始聊天记录 |
 | `/chatrecordmsg <玩家> [页码]` | `report.chatrecordmsg` 或 `report.chatrecord` | 查询聊天发言，过滤指令 |
 
-别名：`/fairyreport` 为 `/wdr`、`/watchdogreport`、`/举报`；`/reportltp` 为 `/ltp`；`/chatrecordmsg` 为 `/chatmsg`。
+别名：`/fairyreport` 为 `/report`、`/wdr`、`/watchdogreport`、`/举报`；`/reportltp` 为 `/ltp`；`/chatrecordmsg` 为 `/chatmsg`。
 
 `report.staff` 保留工作人员身份，包含除广播和重载以外的 `/reports` 权限和跨服传送；`report.admin` 包含所有 `/reports` 权限和跨服传送。这两个身份也接收举报通知。聊天记录和举报提交需要单独授权。独立权限不会自动赋予工作人员身份或通知。受理后的举报只能由受理人结案；多人同时受理时只有一次会成功。
 
