@@ -1,0 +1,201 @@
+# FairyReport 简体中文语言文件
+#
+# 颜色代码用 & 书写，也支持 <#RRGGBB>、<gradient:#色1:#色2>、<red> 等 MiniMessage 写法。
+# {xxx} 是占位符，会被替换为实际内容，请不要改动占位符名称。
+# 消息前缀由 config.yml 的 prefix 控制，此文件中的文案不需要再写前缀。
+
+common:
+  player-only: "&f只有玩家可以执行这条命令。"
+  no-permission: "&c你没有权限使用这个命令！"
+  divider: "&f----------------------------------------------"
+  page-indicator: "&f{page}/{total}"
+  unknown-subcommand: "&f未知子命令"
+  bad-arguments: "&f参数格式不正确"
+
+report:
+  usage: "&f正确用法: /report <玩家> <理由>"
+  success: "&f你举报了玩家 &7{hacker}&f 理由为 {reason} , 举报编号 &7#{token}&f"
+  cooldown: "&f操作过快，请等待 &6{seconds}秒&f 后再试。"
+  self: "&c你不可以举报自己!"
+  target-offline: "&f这个玩家不在线或不存在！"
+  insert-failed: "&f提交举报失败，请稍后重试或联系管理员"
+  no-staff-online: "&f当前没有在线工作人员，举报处理可能推迟。"
+
+reports:
+  upgraded-notify: "&f你的举报 &7#{token}&f 已升级为一级举报，将由管理人员处理。"
+  upgrade-failed: "&f升级失败，举报可能已升级或状态已改变。"
+  upgrade-broadcast: "&f&7{staff}&f 将举报 &7#{token}&f 升级为仅管理员可处理，已重置为未受理。"
+  reload-success: "&f配置和中文文案已重载。数据库连接设置需重启生效。"
+  reload-error: "&f重载失败，请查看控制台日志。"
+  no-permission-raw: "&cUnknown or incomplete command. See below for error"
+  no-permission-echo: "&creports {args}<--[HERE]"
+  usage-page: "&f正确用法: /reports <页数>"
+  usage-all-page: "&f正确用法: /reports all <页数>"
+  total-page: "&f总页数为 {total} 页。"
+  not-exist: "&f举报不存在。"
+  not-exist-short: "&f举报不存在"
+  fetch-failed: "&f获取举报信息失败"
+  fetch-error: "&f获取举报信息时发生错误: {error}"
+  already-accepted: "&c这个举报已被受理。"
+  accept-failed: "&f受理举报失败，请稍后重试"
+  accept-error: "&f处理举报时出现错误。"
+  accepted-notify: "&f你的举报 &7#{token}&f 已被工作人员受理。"
+  accept-broadcast: "&f&7{staff}&f 受理了举报 &7#{token}&f"
+  already-finished: "&c这个举报已被处理。"
+  not-accepted-yet: "&f请先受理这个举报。"
+  not-your-report: "&f只有受理此举报的工作人员才能处理"
+  handle-failed: "&f处理举报失败，请稍后重试"
+  handle-error: "&f处理举报时发生错误。"
+  handle-broadcast: "&f&7{staff}&f 处理了举报 &7#{token}&f , 判定为 &a有效&f"
+  deny-broadcast: "&f&7{staff}&f 处理了举报 &7#{token}&f , 判定为 &c无效{deny-reason}&f"
+  removed: "&f已删除该举报。"
+  remove-not-exist: "&f不存在的举报。"
+  remove-error: "&f删除举报时发生错误: {error}"
+  removeall-failed: "&f删除所有举报失败"
+  removeall-error: "&f删除所有举报时发生错误: {error}"
+  removeall-broadcast: "&f已删除所有举报。"
+  removeoffline-broadcast: "&f已删除所有离线玩家举报。"
+  accepted-list-header: "&f你受理的举报: "
+  accepted-list-error: "&f获取举报&7{token}&f信息时出错"
+  feature-disabled: "&f该功能暂未开放"
+  unknown-command: "&fUnknown command. Type \"/help\" for help."
+  info-fetch-failed: "&f无法获取举报信息: &7{token}&f"
+
+top:
+  header: "&f截止至{time}的工作人员举报处理排行榜"
+  empty: "&f 暂无数据"
+  entry: "&f#{rank} &7{name} &f处理 &a{count}"
+
+notify:
+  pending-periodic: "&f当前有 &6{count}&f 个举报未被受理, 请关注。"
+  pending-join: "&f当前有 &6{count}&f 个举报未被受理"
+
+ui:
+  reason-hidden: ' 理由: &7*** '
+  player-line: ' 玩家: &7'
+  reporter-label: '  &f举报者: &7'
+  token-label: ' 编号: &8#'
+  reason-line: ' 理由: &7{reason}  &f次数: {color}{count} '
+  status-not-accepted: '  状态: &6未受理 '
+  status-accepted: '  状态: &a由{staff}处理中 '
+  status-finished: '  状态: &7由{staff}完成 '
+  result-agreed: ' &7结果: &a有效 '
+  result-denied: ' &7结果: &c无效{deny-reason}&f '
+  result-none: ' '
+  # 踢出按钮附带的理由，不能含空格
+  kick-reason: '破坏游戏环境'
+  button:
+    upgrade: '&e(U)'
+    accept: '&e[受理]'
+    invalid: '&4[无效]'
+    other: '&7[其他]'
+    kick: '&b[踢出]'
+    ban-label: ' &f封禁: '
+    mute-label: ' 禁言: '
+    duration-7d: '&6[7天]'
+    duration-perm: '&c[永久]'
+    teleport: '&a(T)'
+    chatlog: '&7(C)'
+    delete: '&c(D)'
+    broadcast: '&b(B)'
+  hover:
+    upgrade: '&e升级为仅管理员可处理，并重置受理状态'
+    copy: '&7点击复制'
+    teleport: '所在服务器: &7{server}'
+    teleport-offline: '&7玩家已离线'
+    delete: '&c删除这条举报'
+    broadcast: '&b向全体工作人员广播这个举报'
+    accept: '&e受理该举报'
+    invalid: '&4判定该举报无效'
+    other: '&a处理该举报'
+    kick: '&b踢出'
+    ban-7d: '&6封禁7天'
+    ban-perm: '&c封禁永久'
+    mute-7d: '&6禁言7天'
+    mute-perm: '&c禁言永久'
+    report-detail: '&7{hacker} &f被 &7{reporter} &f因 &7{reason} &f被举报,所在服务器: &7{server}     &8#{token}'
+  chatlog:
+    db-not-ready: '数据库未初始化'
+    no-record: '此玩家无聊天记录'
+    only-commands: '此玩家无聊天记录（仅命令消息）'
+    load-failed: '加载聊天记录失败，请稍后重试'
+    line: ' &7[{time} / {server}] {message}'
+
+handle:
+  deny-reason-inline: '&7（原因:{reason}）'
+  deny-reason: '&f无效原因：{reason}'
+  upgraded-result-agreed: "&f 处理，判定为 &a有效举报&f。"
+  upgraded-result-denied: "&f 处理，判定为 &c无效举报{deny-reason}&f。"
+  prefix-line: "&f你的举报 "
+  by: "&f 被 "
+  staff-alias: "&7工作人员#{number}&f"
+  admin-alias: "&7管理人员#{number}&f"
+  result-agreed: "&f 处理, 判定为 &a有效举报&f。"
+  result-denied: "&f 处理, 判定为 &c无效举报{deny-reason}&f。"
+  fetch-failed: "&f无法获取举报信息: &7{token}&f"
+  rate:
+    very-bad: '&c&l[不满意]'
+    bad: '&6&l[较不满]'
+    normal: '&e&l[一般]'
+    good: '&a&l[较满意]'
+    very-good: '&2&l[满意]'
+  rate-hover:
+    very-bad: '&c不满意'
+    bad: '&6较不满'
+    normal: '&e一般'
+    good: '&a较满意'
+    very-good: '&2满意'
+
+point:
+  upgraded-no-rating: "&f一级举报不支持打分。"
+  usage: "&f正确用法: /reportpoint <举报编号> <评分(1-5)>"
+  not-exist: "&f举报记录不存在或已被删除"
+  not-reporter: "&f只有举报者本人可以进行评分"
+  already-rated: "&f请勿重复评分"
+  out-of-range: "&f评分范围必须在1-5之间"
+  invalid-number: "&f请输入有效的数字评分"
+  failed: "&f评分失败，请稍后重试"
+  thanks: "&f感谢反馈, 祝您游戏愉快~"
+  error: "&f处理评分时发生错误，请稍后重试"
+
+chatrecord:
+  no-permission: "&c你没有权限."
+  usage: "&f用法: /chatrecord <玩家名> [页码]"
+  usage-msg: "&f用法: /chatrecordmsg <玩家名> [页码]"
+  page-not-number: "&f页码必须为数字。"
+  db-not-ready: "&f数据库未初始化，无法查询。"
+  empty: "&f玩家 &7{player}&f 没有聊天记录。"
+  empty-filtered: "&f玩家 &7{player}&f 没有可显示的非指令聊天记录。"
+  page-out-of-range: "&f所选页数超出最大范围。"
+  page-out-of-range-max: "&f页码超出范围，最大页码为 {max}"
+  query-error: "&f查询数据库时出错，请查看后台日志。"
+  divider: "&f----------------------------------------"
+  header: "&f&7{player}&f 的聊天记录 (第 {page}/{max} 页)"
+  line: '&7[{time}] {message}'
+  hover-server: "&f服务器: {server}"
+  hover-posted: "&f发表于 {server}"
+  prev-page: '&a(<<) '
+  prev-page-disabled: '&7(<<) '
+  next-page: '&a(>>)'
+  next-page-disabled: '&7(>>)'
+  no-page: '&7(<<) (>>)'
+  hover-prev: '&7上一页'
+  hover-next: '&7下一页'
+
+ltp:
+  no-permission: "&c封禁系统 » 您没有权限执行此命令。"
+  offline: "&f封禁系统 » 此玩家不在线或不存在。"
+  usage: "&f封禁系统 » 用法: /ltp <玩家>"
+
+distribution:
+  usage: "&f用法：/reports {command} on/off"
+  personal: "&f个人自动派单：{state}"
+  global: "&f全局派单模式：{state}（on 派单，off 抢单）"
+  save-failed: "&f派单设置保存失败。"
+  reserved: "&f该举报正在等待被分配人员确认。"
+  reminder: "&f举报 &7#{token}&f 已分配给你，请在 10 秒内确认接单，超时后开放抢单。"
+  expired: "&f举报 &7#{token}&f 确认超时，现已开放抢单。"
+  confirming: "  状态: &e由{staff}确认中 "
+
+  assigned: "&f新的举报 &7#{token}&f 已派给 &e{staff}&f，请在 10 秒内确认接单，超时后开放抢单。"
+  assigned-self: "&f新的举报 &7#{token}&f 已派给你，请在 10 秒内确认接单，超时后开放抢单。"

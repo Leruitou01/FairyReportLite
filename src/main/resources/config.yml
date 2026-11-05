@@ -1,0 +1,118 @@
+# 举报数据库模式：mysql 或 sqlite。修改后需重启，切换模式不会自动迁移旧数据。
+report-storage:
+  type: mysql
+  # SQLite 文件路径；相对路径以插件数据文件夹为基准。
+  sqlite-file: reports.db
+
+mysql:
+  host: 'localhost'
+  port: 3306
+  database: 'report'
+  username: 'root'
+  password: 'password'
+prefix: "&bFairyReport &8@ &r"
+
+# ===== 举报下方的聊天操作按钮（不是屏幕底部 ActionBar） =====
+# staff/admin 可分别设置顺序；同时拥有两种权限时使用 admin。
+# pending 为未受理，accepted 为已受理；已受理时仅处理人可操作，完结后隐藏。
+# 列表设为 [] 可隐藏对应状态的整排按钮。旧配置缺少角色段落时使用默认值。
+# 所有按钮在 buttons 中定义；列表中的顺序就是显示顺序。
+# label-key/hover-key 对应 lang/Chinese.yml 的键。
+# 也可使用 label/hover 直接填写文本；设置了非空语言键时语言键优先。
+# 支持 & 颜色与现有 MiniMessage 格式；方括号由文案提供，可自行修改。
+# command 支持 {token}（或 {id}）、{hacker}、{name}、{viewer}、{server}、
+# {staff}、{reason}、{status}、{kick-reason}；命令不会自动执行于控制台。
+# click-action 可填 RUN_COMMAND、SUGGEST_COMMAND、OPEN_URL 等 Bungee 点击动作。
+# enabled: false 隐藏按钮；permission 可选，用于进一步限制显示权限。
+# 修改后执行 /reports reload。配置按钮不会授予对应命令的执行权限。
+action-bar:
+  staff:
+    enabled: true
+    separator: ' '
+    pending: [accept]
+    accepted: [invalid, other, kick, ban-label, ban-7d, ban-perm, mute-label, mute-7d, mute-perm]
+  admin:
+    enabled: true
+    separator: ' '
+    pending: [accept]
+    accepted: [invalid, other, kick, ban-label, ban-7d, ban-perm, mute-label, mute-7d, mute-perm]
+  buttons:
+    accept:
+      enabled: true
+      label-key: ui.button.accept
+      hover-key: ui.hover.accept
+      click-action: RUN_COMMAND
+      command: '/reports accept {token}'
+    invalid:
+      enabled: true
+      label-key: ui.button.invalid
+      hover-key: ui.hover.invalid
+      click-action: SUGGEST_COMMAND
+      command: '/reports deny {token} '
+    other:
+      enabled: true
+      label-key: ui.button.other
+      hover-key: ui.hover.other
+      click-action: RUN_COMMAND
+      command: '/reports handle {token}'
+    kick:
+      enabled: true
+      label-key: ui.button.kick
+      hover-key: ui.hover.kick
+      click-action: RUN_COMMAND
+      command: '/reports handle {token} kick-{hacker}-{kick-reason}'
+    ban-label:
+      enabled: true
+      label-key: ui.button.ban-label
+    ban-7d:
+      enabled: true
+      label-key: ui.button.duration-7d
+      hover-key: ui.hover.ban-7d
+      click-action: RUN_COMMAND
+      command: '/reports handle {token} ban-{hacker}-7d'
+    ban-perm:
+      enabled: true
+      label-key: ui.button.duration-perm
+      hover-key: ui.hover.ban-perm
+      click-action: RUN_COMMAND
+      command: '/reports handle {token} ban-{hacker}'
+    mute-label:
+      enabled: true
+      label-key: ui.button.mute-label
+    mute-7d:
+      enabled: true
+      label-key: ui.button.duration-7d
+      hover-key: ui.hover.mute-7d
+      click-action: RUN_COMMAND
+      command: '/reports handle {token} mute-{hacker}-7d'
+    mute-perm:
+      enabled: true
+      label-key: ui.button.duration-perm
+      hover-key: ui.hover.mute-perm
+      click-action: RUN_COMMAND
+      command: '/reports handle {token} mute-{hacker}'
+
+#举报编号长度
+IdSize: 6
+#每页举报显示几个
+EachPage: 5
+#一名玩家一天内最多举报同一名玩家几次
+MaxTimeInOneDay: 5
+# 举报频率限制：每个玩家两次举报之间的最短间隔（单位：秒）。默认 600 秒 = 10 分钟
+ReportCooldownSeconds: 600
+# 每页显示的消息数量
+messages-per-page: 10
+# 数据库配置
+database:
+  # 使用 SQLite（本地文件），若使用 MySQL 需修改 driver/url/username/password
+  driver: "org.sqlite.JDBC"
+  url: "jdbc:sqlite:plugins/FairyReport/chat.db"
+  username: ""
+  password: ""
+# 忽略记录的命令（避免记录查询命令本身）
+ignored-commands:
+  - "/chatrecord"
+  - "/l"
+  - "/login"
+  - "/reg"
+  - "/register"

@@ -1,0 +1,10 @@
+﻿# 构建产物
+target/
+*.class
+
+# IDE
+.idea/
+*.iml
+
+# 日志
+*.log
