@@ -4,6 +4,7 @@ import fairylands.fairyreport.Main;
 import fairylands.fairyreport.files.FileManager;
 import fairylands.fairyreport.utils.DatabaseManager;
 import fairylands.fairyreport.utils.LangManager;
+import fairylands.fairyreport.utils.ChatMessageDisplay;
 import fairylands.fairyreport.utils.PrefixGet;
 import net.md_5.bungee.api.CommandSender;
 import net.md_5.bungee.api.ProxyServer;
@@ -70,10 +71,7 @@ public class ChatRecordMsg extends Command implements TabExecutor {
             // 2. 过滤出非指令消息（允许 /lb 开头）
             List<DatabaseManager.Record> filtered = new ArrayList<>();
             for (DatabaseManager.Record rec : allRecords) {
-               String msg = rec.message;
-               if (msg.startsWith("/") && !msg.toLowerCase().startsWith("/lb ")) {
-                  continue; // 跳过指令
-               }
+               if (ChatMessageDisplay.format(rec.message) == null) continue;
                filtered.add(rec);
             }
 
@@ -102,7 +100,7 @@ public class ChatRecordMsg extends Command implements TabExecutor {
 
             for (DatabaseManager.Record rec : pageRecords) {
                String timeStr = dateFormat.format(new Date(rec.time));
-               String msg = rec.message;
+               String msg = ChatMessageDisplay.format(rec.message);
                TextComponent line = new TextComponent(
                        LangManager.of(lang, "chatrecord.line", "time", timeStr, "message", msg));
                line.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT,

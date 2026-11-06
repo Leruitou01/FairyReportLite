@@ -223,10 +223,7 @@ public class Format {
 
             // 过滤出非命令消息（允许 /lb 开头的命令）
             for (DatabaseManager.Record rec : records) {
-               String msg = rec.message;
-               if (msg.startsWith("/") && !msg.toLowerCase().startsWith("/lb ")) {
-                  continue; // 跳过命令
-               }
+               if (ChatMessageDisplay.format(rec.message) == null) continue;
                displayRecords.add(rec);
                if (displayRecords.size() >= targetCount) {
                   break; // 已收集足够
@@ -244,7 +241,7 @@ public class Format {
          SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
          for (DatabaseManager.Record rec : displayRecords) {
             String timeStr = dateFormat.format(new Date(rec.time));
-            String msg = rec.message;
+            String msg = ChatMessageDisplay.format(rec.message);
             builder.append("\n").append(LangManager.of(lang, "ui.chatlog.line",
                   "time", timeStr, "server", rec.server, "message", msg));
          }
